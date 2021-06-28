@@ -1,0 +1,359 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+
+.page-content {
+  height: 100vh;
+  background: #d6d6d6;
+  border-radius: 5px;
+}
+
+#customMenuBar {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  background: rgb(238, 238, 238);
+  align-self: stretch;
+  height: 30px;
+  -webkit-app-region: drag;
+  font-size: 1.5em;
+}
+
+.menu_links {
+  list-style: none;
+  height: 100%;
+}
+
+.menu_links_element {
+  display: inline-block;
+  padding: 0px 15px;
+  height: 100%;
+  -webkit-app-region: no-drag;
+}
+
+.menu_links_element:hover {
+  cursor: pointer;
+  background: black;
+  color: white;
+}
+
+.title {
+  padding-left: 10px;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+canvas {
+  /* border-radius: 5px; */
+  display: none;
+}
+
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  height: 85%;
+}
+
+#canvas {
+  /* display: flex;
+  justify-content: center; */
+  position: relative;
+  align-self: center;
+  display: inline-grid;
+  grid-template-columns: repeat(60, auto);
+}
+
+#selection_bar {
+  background: rgb(52, 52, 52);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#selection_bar input {
+  margin-right: 10px;
+}
+
+/* The container */
+
+.checkboxContainer {
+  color: white;
+  display: block;
+  position: relative;
+  right: 20px;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+
+.checkboxContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+
+.checkmark {
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+
+.checkboxContainer:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.checkboxContainer input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+
+.checkboxContainer input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+
+.checkboxContainer .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.custom-select {
+  width: 200px;
+  font-size: 21.5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.custom-select-wide {
+  width: 250px;
+  font-size: 21.5px;
+  border: none;
+  border-radius: 5px;
+}
+
+#mazes {
+  margin-left: 100px;
+}
+
+.btn {
+  border-radius: 5px;
+  border: none;
+  font-size: 22px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  left: 10px;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  /* background: lightgreen; */
+  /* border: black 1px solid; */
+  border-radius: 5px;
+  margin: 1px;
+  text-align: center;
+  -webkit-user-select: none;
+  background: rgb(125, 125, 125);
+  transition: transform .2s ease-in-out;
+}
+
+/* .cell:hover {
+   transform: scale(1.25);
+   background: rgba(0, 0, 0, 0.685)  !important;
+ } */
+
+.path {
+  background: rgb(255, 255, 0) !important;
+}
+
+.path-anim {
+  animation-name: pathAnimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+@keyframes pathAnimation {
+  0% {
+    transform: scale(0.3);
+    background-color: #1ad11a;
+    border-radius: 100%;
+  }
+  50% {
+    background-color: #1a9dd1;
+  }
+  75% {
+    transform: scale(1.2);
+    background-color: rgb(221, 52, 52);
+  }
+  100% {
+    transform: scale(1);
+    background-color: rgb(255, 255, 0);
+  }
+}
+
+.start {
+  background: rgb(0, 255, 0) !important;
+}
+
+.end {
+  background: rgb(255, 0, 0) !important;
+}
+
+.wall {
+  background: white;
+}
+
+.wall-anim {
+  animation-name: wallAnimation;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+@keyframes wallAnimation {
+  0% {
+    transform: scale(0.3);
+    background-color: rgb(125, 125, 125);
+    border-radius: 100%;
+  }
+  50% {
+    background-color: #493d3d;
+  }
+  75% {
+    transform: scale(1.2);
+    background-color: #9e62628f;
+  }
+  100% {
+    transform: scale(1);
+    background-color: white;
+  }
+}
+
+.closedSet {
+  background: #E68282 !important;
+}
+
+.closedSet-anim {
+  animation-name: spreadAnimation;
+  animation-duration: 1.25s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.visitedSet {
+  background: #E68282;
+}
+
+.visitedSet-anim {
+  animation-name: spreadAnimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+@keyframes spreadAnimation {
+  0% {
+    transform: scale(0.3);
+    background-color: #3b1212;
+    border-radius: 100%;
+  }
+  50% {
+    background-color: #d11a1a8f;
+  }
+  75% {
+    transform: scale(1.2);
+    background-color: #e94444;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #E68282;
+  }
+}
+
+.passage {
+  animation-name: passageAnimation;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+@keyframes passageAnimation {
+  0% {
+    transform: scale(0.3);
+    background-color: #ffffff;
+    border-radius: 100%;
+  }
+  50% {
+    background-color: #9e62628f;
+  }
+  75% {
+    transform: scale(1.2);
+    background-color: #493d3d;
+  }
+  100% {
+    transform: scale(1);
+    background-color: rgb(125, 125, 125);
+  }
+}
